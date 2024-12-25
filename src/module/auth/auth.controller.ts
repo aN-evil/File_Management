@@ -1,6 +1,19 @@
-import { Body, Controller, Post, HttpStatus } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Post,
+    HttpStatus,
+    Request,
+    Get,
+    UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+    ApiBearerAuth,
+    ApiOperation,
+    ApiResponse,
+    ApiTags,
+} from '@nestjs/swagger';
 import {
     SuccessMessage,
     UnauthorizedMessage,
@@ -10,6 +23,7 @@ import {
 import { CreateGuestDto, CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RefreshTokenDto } from './dto/refresh-token-user.dto';
+import { JwtAuthGuard } from '@common/auth/jwt.guard';
 
 @ApiTags('Authentication Management')
 @Controller('auth')
@@ -94,5 +108,27 @@ export class AuthController {
     })
     async refreshToken(@Body() dto: RefreshTokenDto) {
         return await this.authService.refreshToken(dto.refreshToken);
+    }
+
+    @Get('profile/:id')
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: 'Get user profile' })
+    @ApiResponse({ status: HttpStatus.OK, description: SuccessMessage })
+    @ApiResponse({
+        status: HttpStatus.UNAUTHORIZED,
+        description: UnauthorizedMessage,
+    })
+    @ApiResponse({
+        status: HttpStatus.INTERNAL_SERVER_ERROR,
+        description: InternalServerErrorMessage,
+    })
+    @ApiResponse({
+        status: HttpStatus.BAD_REQUEST,
+        description: BadRequestMessage,
+    })
+    async profile(@Request() req) {
+        const userId: string = req.user.id;
+        return await this.authService.getUserById(userId);
     }
 }
