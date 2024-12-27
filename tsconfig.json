@@ -21,8 +21,7 @@
             "@common/*": ["src/common/*"],
             "@provider/*": ["src/provider/*"],
             "@health/*": ["src/health/*"],
-            "@src/*": ["src/*"],
-            "@app/*": ["*"]
+            "@src/*": ["src/*"]
         }
     },
     "include": ["src/**/*.ts"]
