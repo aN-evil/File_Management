@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import * as fs from 'fs';
 import { AuthService } from './auth.service';
-import { AppConfigModule } from 'src/config/config.module';
+import { AppConfigModule } from '../../config/config.module';
 import { AuthController } from './auth.controller';
-import { JwtStrategy } from 'src/common/auth/jwt.strategy';
+import { JwtStrategy } from '../../common/auth/jwt.strategy';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthRepository } from './repository/auth.repository';
 

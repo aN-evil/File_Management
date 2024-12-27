@@ -19,7 +19,7 @@ import {
     UnauthorizedMessage,
     InternalServerErrorMessage,
     BadRequestMessage,
-} from 'src/common/types/enum.types';
+} from '../../common/types/enum.types';
 import { CreateGuestDto, CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RefreshTokenDto } from './dto/refresh-token-user.dto';

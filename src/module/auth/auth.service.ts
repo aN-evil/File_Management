@@ -4,13 +4,13 @@ import {
     UnauthorizedException,
 } from '@nestjs/common';
 import { AuthRepository } from './repository/auth.repository';
-import { AppConfigService } from 'src/config/config.service';
+import { AppConfigService } from '../../config/config.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { CreateGuestDto, CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { ApiError } from 'src/common/halper/helper.enum';
+import { ApiError } from '../../common/halper/helper.enum';
 
 @Injectable()
 export class AuthService {
