@@ -19,6 +19,8 @@
         "noFallthroughCasesInSwitch": false,
         "paths": {
             "@common/*": ["src/common/*"],
+            "@provider/*": ["src/provider/*"],
+            "@health/*": ["src/health/*"],
             "@src/*": ["src/*"]
         }
     },
