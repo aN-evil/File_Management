@@ -4,8 +4,8 @@ import { HttpModule } from '@nestjs/axios';
 import { HealthController } from './health.controller';
 
 import { TerminusLogger } from './terminus-logger.service';
-import { PrismaModule } from 'src/provider/prisma/prisma.module';
-import { PrismaHealthIndicator } from 'src/provider/prisma/prisma-health.indicator';
+import { PrismaModule } from '../provider/prisma/prisma.module';
+import { PrismaHealthIndicator } from '../provider/prisma/prisma-health.indicator';
 
 @Module({
     imports: [
