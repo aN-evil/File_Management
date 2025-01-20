@@ -13,22 +13,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id             String           @id @unique @default(uuid())
-  email          String?          @unique
-  password       String?
-  username       String?
-  fullName       String?
-  authKey        String?
-  refreshToken   String?
-  expiresAt      DateTime?
-  isDeleted      Boolean          @default(false)
-  isGuest        Boolean          @default(false)
+  id           String    @id @unique @default(uuid())
+  email        String?   @unique
+  password     String?
+  username     String?
+  fullName     String?
+  authKey      String?
+  refreshToken String?
+  expiresAt    DateTime?
+  isDeleted    Boolean   @default(false)
+  isGuest      Boolean   @default(false)
 
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  deletedAt      DateTime?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  deletedAt  DateTime?
+  HomeScreen HomeScreen[]
 
   @@index([email, username])
+}
+
+model HomeScreen {
+  id        String  @id @unique @default(uuid())
+  partyName String
+  placeName String
+  date      String?
+  files     Json[]
+  userId    String?
+  User      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

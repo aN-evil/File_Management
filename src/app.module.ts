@@ -13,9 +13,16 @@ import { HealthModule } from './health/health.module';
 import { AuthModule } from './module/auth/auth.module';
 
 import { PrismaModule } from './provider/prisma/prisma.module';
+import { HomeScreenModule } from './module/home-screen/home-screen.module';
 
 @Module({
-    imports: [AppConfigModule, HealthModule, AuthModule, PrismaModule],
+    imports: [
+        AppConfigModule,
+        HealthModule,
+        AuthModule,
+        PrismaModule,
+        HomeScreenModule,
+    ],
     controllers: [AppController],
     providers: [
         {
