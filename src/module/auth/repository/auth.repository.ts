@@ -79,4 +79,11 @@ export class AuthRepository {
             select: { id: true, refreshToken: true },
         });
     }
+
+    createRefreshToken(id: string) {
+        return this.prismaService.user.update({
+            where: { id },
+            data: { refreshToken: null },
+        });
+    }
 }

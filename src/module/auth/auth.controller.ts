@@ -68,24 +68,24 @@ export class AuthController {
         return await this.authService.loginUser(dto);
     }
 
-    @Post('guest')
-    @ApiOperation({ summary: 'guest login' })
-    @ApiResponse({ status: HttpStatus.OK, description: SuccessMessage })
-    @ApiResponse({
-        status: HttpStatus.UNAUTHORIZED,
-        description: UnauthorizedMessage,
-    })
-    @ApiResponse({
-        status: HttpStatus.INTERNAL_SERVER_ERROR,
-        description: InternalServerErrorMessage,
-    })
-    @ApiResponse({
-        status: HttpStatus.BAD_REQUEST,
-        description: BadRequestMessage,
-    })
-    async guest(@Body() dto: CreateGuestDto) {
-        return await this.authService.createGuest(dto);
-    }
+    // @Post('guest')
+    // @ApiOperation({ summary: 'guest login' })
+    // @ApiResponse({ status: HttpStatus.OK, description: SuccessMessage })
+    // @ApiResponse({
+    //     status: HttpStatus.UNAUTHORIZED,
+    //     description: UnauthorizedMessage,
+    // })
+    // @ApiResponse({
+    //     status: HttpStatus.INTERNAL_SERVER_ERROR,
+    //     description: InternalServerErrorMessage,
+    // })
+    // @ApiResponse({
+    //     status: HttpStatus.BAD_REQUEST,
+    //     description: BadRequestMessage,
+    // })
+    // async guest(@Body() dto: CreateGuestDto) {
+    //     return await this.authService.createGuest(dto);
+    // }
 
     @Post('refresh-token')
     @ApiOperation({

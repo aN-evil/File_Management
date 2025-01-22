@@ -90,28 +90,28 @@ export class AuthService {
         return user;
     }
 
-    async createGuest(dto: CreateGuestDto) {
-        const expiresAt = new Date();
-        expiresAt.setHours(expiresAt.getHours() + 24);
+    // async createGuest(dto: CreateGuestDto) {
+    //     const expiresAt = new Date();
+    //     expiresAt.setHours(expiresAt.getHours() + 24);
 
-        const guestUser = await this.authRepository.createGuestUser({
-            isGuest: true,
-            expiresAt,
-        });
+    //     const guestUser = await this.authRepository.createGuestUser({
+    //         isGuest: true,
+    //         expiresAt,
+    //     });
 
-        const token = await this.generateTokens(guestUser.id);
-        return {
-            id: guestUser.id,
-            accessToken: token.accessToken,
-            refreshToken: token.refreshToken,
-        };
-    }
+    //     const token = await this.generateTokens(guestUser.id);
+    //     return {
+    //         id: guestUser.id,
+    //         accessToken: token.accessToken,
+    //         refreshToken: token.refreshToken,
+    //     };
+    // }
 
-    @Cron(CronExpression.EVERY_DAY_AT_1AM)
-    async deleteExpiredGuests() {
-        const currentTime = new Date();
-        await this.authRepository.deleteExpiredGuests(currentTime);
-    }
+    // @Cron(CronExpression.EVERY_DAY_AT_1AM)
+    // async deleteExpiredGuests() {
+    //     const currentTime = new Date();
+    //     await this.authRepository.deleteExpiredGuests(currentTime);
+    // }
 
     private async handleExistingUser(existingUser, dto) {
         if (existingUser.isDeleted) {
